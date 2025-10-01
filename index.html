@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>AI-Accelerated Web Dev Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* small helper spacing for specific rows */
+    .mb { margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <!-- Global Shell (nav appears on content pages) -->
+  <header class="site-header" aria-label="Site header">
+    <button class="logo" id="logoBtn" title="Go to Login" aria-label="Go to Login">AUT</button>
+    <nav class="top-nav" aria-label="Primary">
+      <a href="#/home" data-link>Home</a>
+      <a href="#/about" data-link>About Me</a>
+      <a href="#/career" data-link>Career</a>
+    </nav>
+  </header>
+
+  <main id="app" class="app">
+    <!-- LOGIN -->
+    <section class="card" data-route="login">
+      <div class="logo-bumper">
+        <button class="logo big" id="logoBtnLogin" title="Go to Login" aria-label="Go to Login">AUT</button>
+      </div>
+      <h2 class="card-title">Login</h2>
+
+      <form id="loginForm" novalidate>
+        <label class="field">
+          <span>User</span>
+          <input type="email" id="loginEmail" name="email" autocomplete="username" placeholder="your.name@aut.ac.nz" required />
+        </label>
+
+        <label class="field">
+          <span>Password</span>
+          <input type="password" id="loginPassword" name="password" autocomplete="current-password" required />
+        </label>
+
+        <div class="row between mb">
+          <a href="#/forgot" class="text-link">Forgot Password?</a>
+        </div>
+
+        <div class="row gap">
+          <button type="submit" class="btn primary">Login</button>
+          <a href="#/signup" class="btn">Sign Up</a>
+        </div>
+      </form>
+
+      
+      <p id="loginMsg" class="msg" role="status" aria-live="polite" hidden></p>
+    </section> <!-- <-- ADD THIS LINE to close the login section -->
+    <!-- SIGN UP -->
+    <section class="card" data-route="signup" hidden>
+      <div class="logo-bumper">
+        <button class="logo big" title="Go to Login" aria-label="Go to Login" data-goto="login">AUT</button>
+      </div>
+      <h2 class="card-title">Create your account</h2>
+      <div class="divider"></div>
+
+      <form id="signupForm" novalidate>
+        <label class="field">
+          <span>Full Name</span>
+          <input type="text" id="fullName" name="fullName" autocomplete="name" placeholder="Your full name" required />
+        </label>
+
+        <label class="field">
+          <span>Email</span>
+          <input type="email" id="signupEmail" name="email" autocomplete="email" placeholder="you@example.com" required />
+        </label>
+
+        <label class="field">
+          <span>Password</span>
+          <input type="password" id="signupPassword" name="password" autocomplete="new-password" placeholder="Create a password" required />
+        </label>
+
+        <button type="submit" class="btn primary block">Sign Up</button>
+      </form>
+
+      <div class="divider"><span>or</span></div>
+
+      <div class="socials">
+        <button class="btn block" type="button" title="Continue with Google (demo)">Continue with Google</button><br><br/>
+        <button class="btn block" type="button" title="Continue with Facebook (demo)">Continue with Facebook</button>
+      </div>
+
+      <div class="center mt-sm">
+        <a href="#/login" class="text-link">Already have an account? Log in</a>
+      </div>
+
+      <p id="signupMsg" class="msg" role="status" aria-live="polite" hidden></p>
+    </section>
+
+    <!-- FORGOT / RESET -->
+    <section class="card" data-route="forgot" hidden>
+      <div class="logo-bumper">
+        <button class="logo big" title="Go to Login" aria-label="Go to Login" data-goto="login">AUT</button>
+      </div>
+      <h2 class="card-title">Reset Password</h2>
+
+      <form id="resetForm" novalidate>
+        <label class="field">
+          <span>New Password</span>
+          <input type="password" id="newPassword" autocomplete="new-password" required />
+        </label>
+
+        <label class="field">
+          <span>Confirm Password</span>
+          <input type="password" id="confirmPassword" autocomplete="new-password" required />
+        </label>
+
+        <div class="row between">
+          <a href="#/login" class="text-link">← Back to Login</a>
+          <button type="submit" class="btn primary">Update Password</button>
+        </div>
+      </form>
+
+      <p id="resetMsg" class="msg" role="status" aria-live="polite" hidden></p>
+    </section>
+
+    <!-- HOME -->
+    <section class="page" data-route="home" hidden>
+      <h1 class="gradient-header">Accelerating Web Development with AI tools</h1>
+      <section class="panel">
+        <h3>Project Overview</h3>
+        <p>
+          This demo shows how AI can generate a portfolio-style webpage.
+          The process demonstrates speed, accessibility, and reduced entry barriers
+          for beginners in web development.
+        </p>
+      </section>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="page" data-route="about" hidden>
+      <h1 class="gradient-header">Accelerating Web Development with AI tools</h1>
+      <section class="panel">
+        <h3>About Me</h3>
+        <p>
+          I am a Master's student in Computer and Information Science at AUT.
+          This website was generated with the help of AI tools to demonstrate how web development
+          can be accelerated without prior coding experience.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:student@aut.ac.nz">student@aut.ac.nz</a></p>
+      </section>
+    </section>
+
+    <!-- CAREER -->
+    <section class="page" data-route="career" hidden>
+      <h1 class="gradient-header">Accelerating Web Development with AI tools</h1>
+      <section class="panel">
+        <h3>Career</h3>
+        <p>
+          This section can highlight goals, projects, internships, or community contributions.
+          Emphasis is placed on inclusive opportunities and lifelong learning pathways in technology.
+        </p>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer" aria-label="Site footer">
+    This demo promotes accessibility, inclusion, and ethical content.
+    No assumptions are made about gender, age, or background; diversity is welcomed.
+  </footer>
+
+  <script>
+    // --- Simple Router ---
+    const routes = ["login","signup","forgot","home","about","career"];
+    const $ = (sel, ctx=document) => ctx.querySelector(sel);
+    const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
+    
+    function showRoute(name){
+      // Toggle header/nav visibility (show only on content pages)
+      const contentRoutes = new Set(["home","about","career"]);
+      document.querySelector(".site-header").style.display = contentRoutes.has(name) ? "flex" : "none";
+
+      // Show/hide sections
+      $$("[data-route]").forEach(sec => {
+        sec.hidden = sec.getAttribute("data-route") !== name;
+      });
+
+      // Focus first input if present
+      const firstInput = $("[data-route='"+name+"'] input");
+      if (firstInput) firstInput.focus({ preventScroll: true });
+    }
+
+    function parseHash(){
+      const hash = location.hash.replace(/^#\//, "");
+      return routes.includes(hash) ? hash : "login";
+    }
+
+    window.addEventListener("hashchange", () => showRoute(parseHash()));
+    window.addEventListener("DOMContentLoaded", () => {
+      // Header logo always goes to login
+      $("#logoBtn").addEventListener("click", () => { location.hash = "#/login"; });
+      $("#logoBtnLogin").addEventListener("click", () => { location.hash = "#/login"; });
+
+      $$("[data-goto='login']").forEach(btn => btn.addEventListener("click", () => { location.hash = "#/login"; }));
+
+      // Intercept nav links so they don't submit forms accidentally
+      $$("[data-link]").forEach(a => {
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          location.hash = a.getAttribute("href");
+        });
+      });
+
+      // Forms
+      $("#loginForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = $("#loginEmail").value.trim();
+        const pw = $("#loginPassword").value.trim();
+        const loginMsg = $("#loginMsg");
+        if (!email || !pw) {
+          loginMsg.textContent = "Please enter both user and password.";
+          loginMsg.hidden = false;
+          return;
+        }
+        loginMsg.textContent = "";
+        loginMsg.hidden = true;
+        location.hash = "#/home";
+      });
+
+      // hide login message as soon as user starts typing
+      $("#loginEmail").addEventListener("input", () => { $("#loginMsg").hidden = true; $("#loginMsg").textContent = ""; });
+      $("#loginPassword").addEventListener("input", () => { $("#loginMsg").hidden = true; $("#loginMsg").textContent = ""; });
+
+      $("#signupForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = $("#fullName").value.trim();
+        const email = $("#signupEmail").value.trim();
+        const pw = $("#signupPassword").value.trim();
+        const signupMsg = $("#signupMsg");
+        if (!name || !email || !pw) {
+          signupMsg.textContent = "Please complete Full Name, Email, and Password.";
+          signupMsg.hidden = false;
+          return;
+        }
+        const okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if (!okEmail) {
+          signupMsg.textContent = "Please enter a valid email address.";
+          signupMsg.hidden = false;
+          return;
+        }
+        signupMsg.textContent = "";
+        signupMsg.hidden = true;
+        // Demo: treat successful sign-up as logged in
+        location.hash = "#/home";
+      });
+
+      // hide signup message when user types
+      ["#fullName","#signupEmail","#signupPassword"].forEach(id => {
+        const el = $(id);
+        if (el) el.addEventListener("input", () => { $("#signupMsg").hidden = true; $("#signupMsg").textContent = ""; });
+      });
+
+      $("#resetForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const n = $("#newPassword").value;
+        const c = $("#confirmPassword").value;
+        const resetMsg = $("#resetMsg");
+        if (!n || !c) {
+          resetMsg.textContent = "Please fill in both password fields.";
+          resetMsg.hidden = false;
+          return;
+        }
+        if (n !== c) {
+          resetMsg.textContent = "Passwords do not match.";
+          resetMsg.hidden = false;
+          return;
+        }
+        resetMsg.textContent = "Password updated for demo purposes. Please login.";
+        resetMsg.hidden = false;
+        setTimeout(() => { location.hash = "#/login"; }, 600);
+      });
+
+      // hide reset message when user types
+      ["#newPassword","#confirmPassword"].forEach(id => {
+        const el = $(id);
+        if (el) el.addEventListener("input", () => { $("#resetMsg").hidden = true; $("#resetMsg").textContent = ""; });
+      });
+
+      // Initial route
+      if (!location.hash) location.hash = "#/login";
+      showRoute(parseHash());
+    });
+  </script>
+</body>
+</html>
