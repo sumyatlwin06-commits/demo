@@ -1,2 +1,2 @@
-# ai-web-demo
+# demo
 STEM subject Demo
